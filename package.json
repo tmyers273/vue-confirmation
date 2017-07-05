@@ -1,9 +1,9 @@
 {
-    "name": "tmyers273/tmyers273.vue-confirmation",
+    "name": "tmyers273.vue-confirmation",
     "description": "Confirmation component for Vue.js",
     "version": "1.0.0",
     "author": "tmyers273",
-    "require": {},
+    "main": "dist/index.js",
     "peerDependencies": {
         "vue": "^2.2.6"
     }
