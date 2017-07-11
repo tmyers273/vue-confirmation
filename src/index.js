@@ -37,9 +37,9 @@ const Plugin = {
             return Vue.prototype.$confirmation.show(name);
         };
 
-        let component_name = options.component_name ? options.component_name : 'modal';
+        let component_name = options.component_name ? options.component_name : 'vue-confirmation';
 
-        Vue.component(component_name, Confirmation)
+        Vue.component(component_name, Confirmation);
 
         return null;
     }
