@@ -56,3 +56,20 @@
 
     }
 </script>
+
+<style scoped>
+    .modal-container {
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        justify-content: space-between;
+    }
+
+    .footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+</style>
