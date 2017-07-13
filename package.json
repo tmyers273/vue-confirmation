@@ -28,5 +28,9 @@
   },
   "scripts": {
     "build": "webpack --config ./build/webpack.config.js --progress --hide-modules"
+  },
+  "babel": {
+    "presets": ["env"],
+    "comments": false
   }
 }

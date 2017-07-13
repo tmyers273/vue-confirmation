@@ -78,34 +78,43 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Confirmation_vue__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__Confirmation_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__Confirmation_vue__);
 
 
-const Plugin = {
-    install(Vue, options = {}) {
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _Confirmation = __webpack_require__(1);
+
+var _Confirmation2 = _interopRequireDefault(_Confirmation);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Plugin = {
+    install: function install(Vue) {
+        var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
 
         if (!this.hasOwnProperty("event")) {
             this.event = new Vue();
         }
 
-        const $confirmation = {
-            show(name, params) {
+        var $confirmation = {
+            show: function show(name, params) {
                 Plugin.event.$emit('show', name, true, params);
-                this.promise = new Promise((resolve, reject) => {
+                this.promise = new Promise(function (resolve, reject) {
                     Plugin.event.$off('cancelled');
                     Plugin.event.$off('confirmed');
 
-                    Plugin.event.$on('cancelled', action_name => {
+                    Plugin.event.$on('cancelled', function (action_name) {
                         if (action_name == name) {
                             reject(name);
                         }
                     });
-                    Plugin.event.$on('confirmed', action_name => {
+                    Plugin.event.$on('confirmed', function (action_name) {
                         if (action_name == name) {
                             resolve(name);
                         }
@@ -116,22 +125,24 @@ const Plugin = {
         };
 
         Object.defineProperty(Vue.prototype, '$confirmation', {
-            get: () => $confirmation
+            get: function get() {
+                return $confirmation;
+            }
         });
 
-        window.confirm = name => {
+        window.confirm = function (name) {
             return Vue.prototype.$confirmation.show(name);
         };
 
-        let component_name = options.component_name ? options.component_name : 'vue-confirmation';
+        var component_name = options.component_name ? options.component_name : 'vue-confirmation';
 
-        Vue.component(component_name, __WEBPACK_IMPORTED_MODULE_0__Confirmation_vue___default.a);
+        Vue.component(component_name, _Confirmation2.default);
 
         return null;
     }
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (Plugin);
+exports.default = Plugin;
 
 /***/ }),
 /* 1 */
@@ -173,66 +184,54 @@ module.exports = Component.exports
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__index__ = __webpack_require__(0);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 
-/* harmony default export */ __webpack_exports__["default"] = ({
+var _index = __webpack_require__(0);
 
-    data() {
+var _index2 = _interopRequireDefault(_index);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = {
+    data: function data() {
         return {
             promise: null
         };
     },
 
-    methods: {
 
-        confirmed() {
-            __WEBPACK_IMPORTED_MODULE_0__index__["default"].event.$emit('confirmed', this.name);
+    methods: {
+        confirmed: function confirmed() {
+            _index2.default.event.$emit('confirmed', this.name);
             this.$modal.hide(this.name);
         },
-
-        cancelled() {
-            __WEBPACK_IMPORTED_MODULE_0__index__["default"].event.$emit('cancelled', this.name);
+        cancelled: function cancelled() {
+            _index2.default.event.$emit('cancelled', this.name);
         },
-
-        load() {
-            //                this.promise = new Promise();
-            //                return this.promise();
-        }
-
+        load: function load() {}
     },
 
-    mounted() {
-        __WEBPACK_IMPORTED_MODULE_0__index__["default"].event.$on('show', name => {
-            if (name == this.name) {
-                this.$modal.show(this.name);
+    mounted: function mounted() {
+        var _this = this;
+
+        _index2.default.event.$on('show', function (name) {
+            if (name == _this.name) {
+                _this.$modal.show(_this.name);
             }
         });
     },
 
+
     props: ['name']
 
-});
+};
 
 /***/ }),
 /* 3 */
